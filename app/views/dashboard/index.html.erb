@@ -1,1 +1,5 @@
 <div id="map"></div>
+
+<%= javascript_tag do %>
+  window.employees = JSON.parse('<%= j @employees.to_json.html_safe %>');
+<% end %>

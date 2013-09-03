@@ -1,2 +1,41 @@
 $ ->
   map = L.mapbox.map('map', '<%= ENV['MAP_ID'] %>')
+
+  employeeTemplate = (employee) ->
+    """
+      <table>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <td>#{employee.first_name} #{employee.last_name}</td>
+          </tr>
+          <tr>
+            <th>Address</th>
+            <td>#{employee.street} #{employee.zip} #{employee.city}</td>
+          </tr>
+          <tr>
+            <th>Phone</th>
+            <td>#{employee.phone}</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>#{employee.email}</td>
+          </tr>
+        </tbody>
+      </table>
+    """
+
+  featureCollection =
+    type: 'FeatureCollection'
+    features: for employee in employees
+      type: 'Feature'
+      geometry:
+        type: 'Point'
+        coordinates: [employee.longitude, employee.latitude]
+      properties: employee
+
+  geoJson = L.geoJson featureCollection,
+    onEachFeature: (feature, layer) ->
+      layer.bindPopup employeeTemplate(feature.properties)
+
+  geoJson.addTo map

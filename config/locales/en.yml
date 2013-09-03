@@ -6,3 +6,10 @@ en:
     unit:
       one: "kilometer"
       other: "kilometers"
+  abbreviated_distance:
+    mili:
+      one: "m"
+      other: "m"
+    unit:
+      one: "km"
+      other: "km"

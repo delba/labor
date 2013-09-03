@@ -1,7 +1,7 @@
 <div id="main">
   <div id="map"></div>
   <div id="sidebar">
-    <%= form_tag :search, method: 'GET', id: 'search' do %>
+    <%= form_tag :search, method: 'GET', id: 'new_search', remote: true do %>
       <%= label_tag :search %>
       <%= text_field_tag :search %>
       <%= submit_tag 'Search' %>

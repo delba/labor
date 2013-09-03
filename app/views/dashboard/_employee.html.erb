@@ -1,0 +1,6 @@
+<li>
+  <%= link_to '#' do %>
+    <strong><%= employee.first_name %> <%= employee.last_name %></strong>
+    <span><%= number_to_human employee.distance, units: :abbreviated_distance %></span>
+  <% end %>
+</li>

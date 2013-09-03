@@ -5,6 +5,11 @@ class DashboardController < ApplicationController
 
   def search
     @result = Geocoder.search(params[:search]).first
-    head :no_content unless @result
+
+    if @result
+      @employees = Employee.near(@result.coordinates)
+    else
+      head :no_content
+    end
   end
 end

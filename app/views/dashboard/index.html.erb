@@ -1,6 +1,11 @@
 <div id="main">
   <div id="map"></div>
   <div id="sidebar">
+    <%= form_tag :search, method: 'GET', id: 'search' do %>
+      <%= label_tag :search %>
+      <%= text_field_tag :search %>
+      <%= submit_tag 'Search' %>
+    <% end %>
   </div>
 </div>
 

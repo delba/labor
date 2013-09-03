@@ -31,3 +31,12 @@ body {
   width: 300px;
   padding: 0.75em;
 }
+#search {
+  label {
+    display: none;
+  }
+  input[type="text"] {
+    width: 100%;
+    font: inherit;
+  }
+}

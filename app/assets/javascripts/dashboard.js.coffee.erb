@@ -38,6 +38,8 @@ $ ->
 
   bounds = geoJson.getBounds()
 
-  map = L.mapbox.map('map', '<%= ENV['MAP_ID'] %>').fitBounds(bounds)
+  map = L.mapbox.map('map', '<%= ENV['MAP_ID'] %>',
+          attributionControl: false
+        ).fitBounds(bounds)
 
   geoJson.addTo map

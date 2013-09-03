@@ -7,6 +7,9 @@ $(document).on 'submit', '#search', (e) ->
     url: $form.attr('action')
     data: $form.serialize()
     dataType: 'json'
+    success: (json) ->
+      return unless json
+      console.log json
 $ ->
   map = L.mapbox.map('map', '<%= ENV['MAP_ID'] %>')
 

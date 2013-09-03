@@ -4,6 +4,7 @@ class DashboardController < ApplicationController
   end
 
   def search
-    render nothing: true
+    @result = Geocoder.search(params[:search]).first
+    head :no_content unless @result
   end
 end

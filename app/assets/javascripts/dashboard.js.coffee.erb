@@ -1,6 +1,4 @@
 $ ->
-  map = L.mapbox.map('map', '<%= ENV['MAP_ID'] %>')
-
   employeeTemplate = (employee) ->
     """
       <table>
@@ -37,5 +35,9 @@ $ ->
   geoJson = L.geoJson featureCollection,
     onEachFeature: (feature, layer) ->
       layer.bindPopup employeeTemplate(feature.properties)
+
+  bounds = geoJson.getBounds()
+
+  map = L.mapbox.map('map', '<%= ENV['MAP_ID'] %>').fitBounds(bounds)
 
   geoJson.addTo map

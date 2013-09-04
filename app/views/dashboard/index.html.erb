@@ -3,7 +3,7 @@
   <div id="sidebar">
     <%= form_tag :search, method: 'GET', id: 'new_search', remote: true do %>
       <%= label_tag :search %>
-      <%= text_field_tag :search, nil, tabindex: 1 %>
+      <%= text_field_tag :search, nil, autocomplete: 'off', tabindex: 1 %>
       <%= submit_tag 'Search' %>
     <% end %>
     <ul class="employees"></ul>

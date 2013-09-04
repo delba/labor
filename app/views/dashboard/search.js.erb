@@ -1,5 +1,7 @@
-<% if @employees.any? %>
-  $('ul.employees').html('<%= j render partial: 'employee', collection: @employees %>')
+<% if @search.nil? %>
+  $('ul.employees').html("<li>The address wasn't found</li>")
+<% elsif @employees.none? %>
+  $('ul.employees').html("<li>No employees were found within 20 km</li>")
 <% else %>
-  $('ul.employees').html("<li>No employee found within 20 km</li>")
+  $('ul.employees').html('<%= j render partial: 'employee', collection: @employees %>')
 <% end %>

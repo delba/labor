@@ -1,7 +1,5 @@
-$('ul.employees').remove();
-
 <% if @employees.any? %>
-  $('<ul class="employees">')
-    .html('<%= j render partial: 'employee', collection: @employees %>')
-    .insertAfter('#new_search');
+  $('ul.employees').html('<%= j render partial: 'employee', collection: @employees %>')
+<% else %>
+  $('ul.employees').html("<li>No employee found within 20 km</li>")
 <% end %>

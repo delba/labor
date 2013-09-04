@@ -1,6 +1,7 @@
 $('ul.employees').remove();
 
-$('<ul class="employees">')
-  .html('<%= j render partial: 'employee', collection: @employees %>')
-  .insertAfter('#new_search');
-
+<% if @employees.any? %>
+  $('<ul class="employees">')
+    .html('<%= j render partial: 'employee', collection: @employees %>')
+    .insertAfter('#new_search');
+<% end %>

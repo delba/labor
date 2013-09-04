@@ -4,12 +4,6 @@ class DashboardController < ApplicationController
   end
 
   def search
-    @result = Geocoder.search(params[:search]).first
-
-    if @result
-      @employees = Employee.near(@result.coordinates)
-    else
-      head :no_content
-    end
+    @employees = Employee.near(params[:search])
   end
 end

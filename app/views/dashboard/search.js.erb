@@ -4,4 +4,5 @@
   $('ul.employees').html("<li>No employees were found within 20 km</li>")
 <% else %>
   $('ul.employees').html('<%= j render partial: 'employee', collection: @employees %>')
+  map.fitBounds(<%= @bounds %>)
 <% end %>

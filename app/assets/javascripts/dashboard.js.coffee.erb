@@ -42,7 +42,7 @@ $ ->
     for layer in @getLayers()
       return layer if layer.feature.properties.id is id
 
-  map = L.mapbox.map('map', '<%= ENV['MAP_ID'] %>',
+  window.map = L.mapbox.map('map', '<%= ENV['MAP_ID'] %>',
           attributionControl: false
         ).fitBounds geoJson.getBounds()
 

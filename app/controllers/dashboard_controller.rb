@@ -8,6 +8,7 @@ class DashboardController < ApplicationController
 
     if @search
       @employees = Employee.near(@search.coordinates)
+      @bounds = Locator.get_bounds(@employees, limit: 3)
     end
   end
 end

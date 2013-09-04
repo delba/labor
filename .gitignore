@@ -20,3 +20,6 @@
 
 # Ignore Configuration
 /config/application.yml
+
+# Ignore rdb files
+*.rdb

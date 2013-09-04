@@ -40,20 +40,17 @@ $ ->
     id = parseInt(id)
 
     for layer in @getLayers()
-      if layer.feature.properties.id is id
-        return layer
-
-  bounds = geoJson.getBounds()
+      return layer if layer.feature.properties.id is id
 
   map = L.mapbox.map('map', '<%= ENV['MAP_ID'] %>',
           attributionControl: false
-        ).fitBounds(bounds)
+        ).fitBounds geoJson.getBounds()
 
   geoJson.addTo map
 
   $(document).on 'click', 'ul.employees li a', (e) ->
     e.preventDefault()
 
-    id = $(this).data('id')
-    layer = geoJson.findByFeatureId(id).openPopup()
+    layer = geoJson.findByFeatureId $(this).data('id')
+    layer.openPopup()
     map.setView(layer.getLatLng(), 13)

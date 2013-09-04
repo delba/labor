@@ -5,4 +5,7 @@
 <% else %>
   $('ul.employees').html('<%= j render partial: 'employee', collection: @employees %>')
   map.fitBounds(<%= @bounds %>)
+  L.marker(<%= @search.coordinates %>)
+    .bindPopup('<%= @search.address %>')
+    .addTo(map).openPopup()
 <% end %>

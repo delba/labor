@@ -32,15 +32,14 @@ $ ->
         coordinates: [employee.longitude, employee.latitude]
       properties: employee
 
-  geoJson = L.geoJson featureCollection,
-    onEachFeature: (feature, layer) ->
-      layer.bindPopup employeeTemplate(feature.properties)
-
-  geoJson.findByFeatureId = (id) ->
+  L.GeoJSON::findByFeatureId = (id) ->
     id = parseInt(id)
-
     for layer in @getLayers()
       return layer if layer.feature.properties.id is id
+
+  geoJson = new L.GeoJSON featureCollection,
+    onEachFeature: (feature, layer) ->
+      layer.bindPopup employeeTemplate(feature.properties)
 
   window.map = L.mapbox.map('map', '<%= ENV['MAP_ID'] %>',
           attributionControl: false

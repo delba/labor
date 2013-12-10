@@ -4,8 +4,12 @@
   $('ul.employees').html("<li>No employees were found within 20 km</li>")
 <% else %>
   $('ul.employees').html('<%= j render partial: 'employee', collection: @employees %>')
-  map.fitBounds(<%= @bounds %>)
-  L.marker(<%= @search.coordinates %>)
-    .bindPopup('<%= @search.address %>')
-    .addTo(map).openPopup()
+
+  map.addOneTimeEventListener('viewreset', function() {
+    L.marker(<%= @search.coordinates %>)
+      .bindPopup('<%= @search.address %>')
+      .addTo(map).openPopup()
+  })
+
+  map.fitBounds(<%= @bounds %>).panTo(<%= @search.coordinates %>)
 <% end %>
